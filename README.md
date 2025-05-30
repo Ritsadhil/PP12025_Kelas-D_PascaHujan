@@ -2,6 +2,7 @@
 ## Daftar Harga Produk
 ## **Pasca hujan**
 - Harits
-- Tawakal         
-- Azmii             
-- Haekal           
+- Rianda       
+- Akbar            
+- Nauval
+- Eka           
