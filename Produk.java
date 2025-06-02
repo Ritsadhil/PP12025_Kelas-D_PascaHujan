@@ -1,7 +1,13 @@
 public class Produk {
-    
 	private int harga;
-	 private String kode, nama, kategori;
+	private String kode, nama, kategori;
+
+    public Produk() {
+        this.harga = harga;
+        this.kategori = kategori;
+        this.kode = kode;
+        this.nama = nama;
+    }
 
 	public int getHarga() {
 		return harga;
