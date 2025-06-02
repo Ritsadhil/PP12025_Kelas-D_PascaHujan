@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class CRUD {
  public Produk[] listProduk;
-     int indexArray = 0;
+     int indexList = 0;
 	    static StringBuilder sb = new StringBuilder();
 	    static String[] dump;
 	    Scanner sc = new Scanner(System.in);
