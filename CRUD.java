@@ -1,5 +1,6 @@
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -24,6 +25,23 @@ public class CRUD {
 		    System.out.println("99. Keluar ");
 		}
 	    
+public void tulisFile() {
+		try {
+			FileWriter fw = new FileWriter("Produk.txt", false);
+			for (int a = 0; a < listProduk.length; a++) {
+				fw.write(listProduk[a].getKode() + "-" + listProduk[a].getNama() + "-" 
+						+ listProduk[a].getHarga() + "-" + listProduk[a].getKategori()
+						+ " ");
+				fw.flush();
+			}
+			fw.write(".");
+			fw.flush();
+			fw.close();
+		} catch (IOException io) {
+			System.out.println("Error IO");
+		}
+	}
+
 	    public void hitungJmlData() {
 	        int data = -1;
 	        char ch;
