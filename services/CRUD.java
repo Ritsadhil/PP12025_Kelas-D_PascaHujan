@@ -38,11 +38,11 @@ public class CRUD {
 		if (head == null) {
 			head = newNode;
 		} else {
-			Node current = head;
-			while (current.getNext() != null) {
-				current = current.getNext();
+			Node currNode = head;
+			while (currNode.getNext() != null) {
+				currNode = currNode.getNext();
 			}
-			current.setNext(newNode);
+			currNode.setNext(newNode);
 		}
 		tulisFile();
 	}
@@ -55,25 +55,25 @@ public class CRUD {
 			return;
 		}
 
-		Node current = head;
-		while (current.getNext() != null &&
-				p.getNama().compareToIgnoreCase(current.getNext().getData().getNama()) > 0) {
-			current = current.getNext();
+		Node currNode = head;
+		while (currNode.getNext() != null &&
+				p.getNama().compareToIgnoreCase(currNode.getNext().getData().getNama()) > 0) {
+			currNode = currNode.getNext();
 		}
 
-		newNode.setNext(current.getNext());
-		current.setNext(newNode);
+		newNode.setNext(currNode.getNext());
+		currNode.setNext(newNode);
 	}
 
 	public void tulisFile() {
 		try {
 			FileWriter fw = new FileWriter("Produk.txt", false); // overwrite
-			Node current = head; // pakai linked list, bukan array
+			Node currNode = head; // pakai linked list, bukan array
 
-			while (current != null) {
-				Produk p = current.getData();
+			while (currNode != null) {
+				Produk p = currNode.getData();
 				fw.write(p.getKode() + "-" + p.getNama() + "-" + p.getHarga() + "-" + p.getKategori() + " ");
-				current = current.getNext();
+				currNode = currNode.getNext();
 			}
 
 			fw.write("."); // EOF marker
@@ -202,18 +202,48 @@ public class CRUD {
 			return;
 		}
 
-		Node current = head;
+		Node currNode = head;
 		int i = 1;
-		while (current != null) {
-			Produk p = current.getData();
+		while (currNode != null) {
+			Produk p = currNode.getData();
 			System.out.println(i + ". Kode    : " + p.getKode());
 			System.out.println("   Nama    : " + p.getNama());
 			System.out.println("   Kategori: " + p.getKategori());
 			System.out.println("   Harga   : Rp" + p.getHarga());
 			System.out.println("--------------------------------------------");
-			current = current.getNext();
+			currNode = currNode.getNext();
 			i++;
 		}
 	}
+
+	public void cariData() {
+    System.out.println("\n============== Cari Data Produk =========");
+    System.out.print("Masukan kode produk yang dicari: ");
+    String kode = sc.nextLine().trim();
+    boolean ditemukan = false;
+    
+    Node currNode = head;
+    int counter = 0;
+    
+    while (currNode != null) {
+        Produk p = currNode.getData();
+        if (p != null && p.getKode().equalsIgnoreCase(kode)) {
+            System.out.println("\nData ditemukan pada posisi ke-" + counter);
+            System.out.println("Kode     : " + p.getKode());
+            System.out.println("Nama     : " + p.getNama());
+            System.out.println("Harga    : Rp" + p.getHarga());
+            System.out.println("Kategori : " + p.getKategori());
+            System.out.println("-----------------------------");
+            ditemukan = true;
+        }
+        currNode = currNode.getNext();
+        counter++;
+    }
+    
+    if (!ditemukan) {
+        System.out.println("Data dengan Kode '" + kode + "' tidak ditemukan");
+    }
+    System.out.println("=======================================");
+}
 
 }
