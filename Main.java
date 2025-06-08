@@ -14,10 +14,10 @@ public class Main {
             menu = sc.nextInt();
             switch(menu) {
             	case 1: c.TampilData(); break;
-                case 2: c.tambahData(); break;
-                case 3: c.hapusData(); break;
-                case 4: c.ubahData(); break;
-                case 5: c.cariData(); break;
+                // case 2: c.tambahData(); break;
+                // case 3: c.hapusData(); break;
+                // case 4: c.ubahData(); break;
+                // case 5: c.cariData(); break;
                 case 99: System.out.println("Selamat Tinggal"); break;
                 default: System.out.println("Menu tidak tersedia"); break;
             }
