@@ -170,6 +170,31 @@ public class CRUD {
 		System.out.println("=============== Data Berhasil Diambil ===============");
 	}
 
+	public void tambahData() {
+		System.out.println("\n=== Tambah Data Produk ===");
+		Produk produk = new Produk();
+
+		System.out.print("Kode Produk  : ");
+		produk.setKode(sc.nextLine().trim());
+
+		System.out.print("Nama Produk  : ");
+		produk.setNama(sc.nextLine().trim());
+
+		System.out.print("Harga        : Rp");
+		try {
+			produk.setHarga(Integer.parseInt(sc.nextLine().trim()));
+		} catch (NumberFormatException e) {
+			System.out.println("Harga harus berupa angka!");
+			return;
+		}
+
+		System.out.print("Kategori     : ");
+		produk.setKategori(sc.nextLine().trim());
+
+		addTail(produk);
+		System.out.println("Data berhasil ditambahkan!");
+	}
+
 	public void display() {
 		System.out.println("\n=============== Daftar Produk ===============");
 		if (head == null) {
