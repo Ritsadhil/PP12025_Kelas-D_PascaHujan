@@ -18,9 +18,9 @@ public class Main {  public static void main(String[] args) {
 	            }
 
 	            switch (menu) {
-	                case 1:
-	                    c.tambahData();
-	                    break;
+	                // case 1:
+	                //     c.tambahData();
+	                //     break;
 	                case 2:
 	                    c.display();
 	                    break;
