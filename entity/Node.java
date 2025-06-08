@@ -1,6 +1,6 @@
 public class Node {
     private Produk data;
-	    private Node next;
+	private Node next;
 	    
 	    public Node(Produk data) {
 	        this.data = data;
