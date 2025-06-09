@@ -272,7 +272,96 @@ public class CRUD {
 		tulisFile();
 	}
 
+public void ubahData() {
+    System.out.println("\n=============== Ubah Data Produk ===============");
+    if (head == null) {
+        System.out.println("Belum ada data produk!");
+        return;
+    }
 
+ System.out.print("\nMasukkan Kode produk yang ingin diubah: ");
+    String kode = sc.nextLine();
+ Node currNode = head;
+ boolean ditemukan = false;
+
+ while (currNode != null) {
+        Produk produk = currNode.getData();
+        if (produk != null && produk.getKode().equalsIgnoreCase(kode)) {
+            ditemukan = true;
+        
+            System.out.println("\nData saat ini:");
+            System.out.println("1. Nama     : " + produk.getNama());
+            System.out.println("2. Harga    : Rp" + produk.getHarga());
+            System.out.println("3. Kategori : " + produk.getKategori());
+            
+            System.out.println("\nMasukkan data baru (kosongkan jika tidak ingin mengubah):");
+            
+            System.out.print("Nama baru: ");
+            String namaBaru = sc.nextLine();
+            if (!namaBaru.isEmpty()) {
+                produk.setNama(namaBaru);
+            }
+            
+            System.out.print("Harga baru: Rp");
+            String hargaBaruStr = sc.nextLine();
+            if (!hargaBaruStr.isEmpty()) {
+                try {
+                    produk.setHarga(Integer.parseInt(hargaBaruStr));
+                } catch (NumberFormatException e) {
+                    System.out.println("Harga harus berupa angka! Perubahan harga dibatalkan.");
+                }
+            }
+            
+            System.out.print("Kategori baru: ");
+            String kategoriBaru = sc.nextLine();
+            if (!kategoriBaru.isEmpty()) {
+                produk.setKategori(kategoriBaru);
+            }
+            
+            System.out.println("\nData berhasil diubah!");
+            break;
+        }
+        currNode = currNode.getNext();
+    }
+
+    if (!ditemukan) {
+        System.out.println("Produk dengan kode '" + kode + "' tidak ditemukan!");
+    }
+
+    // Simpan perubahan ke file
+    tulisFile();
+    System.out.println("============================================");
+
+	public void cariData() {
+    System.out.println("\n============== Cari Data Produk =========");
+    System.out.print("Masukan kode produk yang dicari: ");
+    String kode = sc.nextLine().trim();
+    boolean ditemukan = false;
+    
+    Node currNode = head;
+    int counter = 0;
+    
+    while (currNode != null) {
+        Produk p = currNode.getData();
+        if (p != null && p.getKode().equalsIgnoreCase(kode)) {
+            System.out.println("\nData ditemukan pada posisi ke-" + counter);
+            System.out.println("Kode     : " + p.getKode());
+            System.out.println("Nama     : " + p.getNama());
+            System.out.println("Harga    : Rp" + p.getHarga());
+            System.out.println("Kategori : " + p.getKategori());
+            System.out.println("-----------------------------");
+            ditemukan = true;
+        }
+        currNode = currNode.getNext();
+        counter++;
+    }
+    
+    if (!ditemukan) {
+        System.out.println("Data dengan Kode '" + kode + "' tidak ditemukan");
+    }
+    System.out.println("=======================================");
+}
+}
 
 
 
