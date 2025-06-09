@@ -249,7 +249,53 @@ public class CRUD {
 		tulisFile();
 	}
 
-	public void cariData() {
+
+
+public void ubahData() {
+		System.out.println("\n=== Ubah Data Produk ===");
+		System.out.print("Masukkan kode produk yang ingin diubah: ");
+		String kode = sc.nextLine().trim();
+
+		Node currNode = head;
+		while (currNode != null && !currNode.getData().getKode().equalsIgnoreCase(kode)) {
+			currNode = currNode.getNext();
+		}
+
+		if (currNode == null) {
+			System.out.println("Data dengan kode '" + kode + "' tidak ditemukan.");
+			return;
+		}
+
+		Produk p = currNode.getData();
+		System.out.println("Data ditemukan:");
+		System.out.println("Kode     : " + p.getKode());
+		System.out.println("Nama     : " + p.getNama());
+		System.out.println("Harga    : Rp" + p.getHarga());
+		System.out.println("Kategori : " + p.getKategori());
+
+		System.out.print("Masukkan nama baru (kosongkan jika tidak ingin mengubah): ");
+		String namaBaru = sc.nextLine().trim();
+		if (!namaBaru.isEmpty()) {
+			p.setNama(namaBaru);
+		}
+
+		System.out.print("Masukkan harga baru (0 jika tidak ingin mengubah): ");
+		int hargaBaru = Integer.parseInt(sc.nextLine().trim());
+		if (hargaBaru > 0) {
+			p.setHarga(hargaBaru);
+		}
+
+		System.out.print("Masukkan kategori baru (kosongkan jika tidak ingin mengubah): ");
+		String kategoriBaru = sc.nextLine().trim();
+		if (!kategoriBaru.isEmpty()) {
+			p.setKategori(kategoriBaru);
+		}
+
+		tulisFile();
+		System.out.println("Data berhasil diubah!");
+	}
+
+		public void cariData() {
     System.out.println("\n============== Cari Data Produk =========");
     System.out.print("Masukan kode produk yang dicari: ");
     String kode = sc.nextLine().trim();
