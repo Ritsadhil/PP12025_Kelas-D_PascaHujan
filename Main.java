@@ -27,8 +27,15 @@ public class Main {  public static void main(String[] args) {
 	                case 3:
 	                    c.hapusData();
 	                    break;
-	                // case 4: c.ubahData(); break;
+<<<<<<< HEAD
+	                case 4:
+	                    c.ubahData();
+	                    break;
 	                case 5: c.cariData(); break;
+=======
+	                case 4: c.ubahData(); break;
+	                case 5: c.cariData(); break;
+>>>>>>> ded0d13c9052cc689d54c263b76b17c271ddc129
 	                case 99:
 	                    System.out.println("Selamat Tinggal");
 	                    break;
