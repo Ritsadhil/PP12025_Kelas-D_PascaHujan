@@ -216,6 +216,39 @@ public class CRUD {
 		}
 	}
 
+	public void hapusData() {
+		System.out.println("\n=== Hapus Data Produk ===");
+		System.out.print("Masukkan kode produk yang ingin dihapus: ");
+		String kode = sc.nextLine().trim();
+
+		if (head == null) {
+			System.out.println("Data kosong.");
+			return;
+		}
+
+		Node currNode = head;
+		Node prevNode = null;
+
+		while (currNode != null && !currNode.getData().getKode().equalsIgnoreCase(kode)) {
+			prevNode = currNode;
+			currNode = currNode.getNext();
+		}
+
+		if (currNode == null) {
+			System.out.println("Data dengan kode '" + kode + "' tidak ditemukan.");
+			return;
+		}
+
+		if (prevNode == null) {
+			head = currNode.getNext(); // Hapus head
+		} else {
+			prevNode.setNext(currNode.getNext()); // Hapus node tengah atau tail
+		}
+
+		System.out.println("Data dengan kode '" + kode + "' berhasil dihapus.");
+		tulisFile();
+	}
+
 	public void cariData() {
     System.out.println("\n============== Cari Data Produk =========");
     System.out.print("Masukan kode produk yang dicari: ");

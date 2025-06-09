@@ -24,7 +24,9 @@ public class Main {  public static void main(String[] args) {
 	                case 2:
 	                    c.display();
 	                    break;
-	                // case 3: c.hapusData(); break;
+	                case 3:
+	                    c.hapusData();
+	                    break;
 	                // case 4: c.ubahData(); break;
 	                case 5: c.cariData(); break;
 	                case 99:
